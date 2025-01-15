@@ -32,7 +32,7 @@ export const getOutFilename = (program:MuddleArgs, filename:string): string => {
 };
 
 export const replaceInStrIfScriptor = (a: string, b: string, str: string) => {
-    const scriptors = ['s\.', 'G\\b', 'db\.', 'fs\.', 'hs\.', 'ms\.', 'ls\.', 'ns\.', '4s\.', '3s\.', '2s\.', '1s\.', '0s\.']
+    const scriptors = ['s\.', 'FMCL\\b', 'D\\(', 'G\\b', 'db\.', 'fs\.', 'hs\.', 'ms\.', 'ls\.', 'ns\.', '4s\.', '3s\.', '2s\.', '1s\.', '0s\.']
     const lookahead = `(?=${scriptors.join('|')})`
     return str.replace(new RegExp(`${a}${lookahead}`, 'gm'), b)
 }
