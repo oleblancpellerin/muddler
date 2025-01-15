@@ -22,9 +22,8 @@ const muddify = (code:string) =>replaceInStrIfScriptor('\\\$', '#', code).replac
  * Compiles the code and transforms it into a form hackmud can understand.
  */
 export async function compile(program: MuddleArgs, filename: string, basename: string):Promise<void> {
-	if(filename.endsWith('.ts')){
-		filename = basename+'.temp.js';
-	}
+	filename = filename.replace(/\.[jt]s$/, '.temp.js')
+
 	let code = fs.readFileSync(filename, 'utf8');
 	let compiled = minify(code, {
 		warnings:true,
