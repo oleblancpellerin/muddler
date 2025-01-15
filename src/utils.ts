@@ -34,9 +34,7 @@ export const getOutFilename = (program:MuddleArgs, filename:string): string => {
 export const replaceInStrIfScriptor = (a: string, b: string, str: string) => {
     const scriptors = ['s\.', 'G\\b', 'db\.', 'fs\.', 'hs\.', 'ms\.', 'ls\.', 'ns\.', '4s\.', '3s\.', '2s\.', '1s\.', '0s\.']
     const lookahead = `(?=${scriptors.join('|')})`
-    return str.split('\n')
-        .map(line => line.replace(new RegExp(`${a}${lookahead}`, 'g'), b))
-        .join('\n');
+    return str.replace(new RegExp(`${a}${lookahead}`, 'gm'), b)
 }
 
 export const anonymizeFirstFunction = (str: string) => str.replace(/^.*?\(/, "function(");
