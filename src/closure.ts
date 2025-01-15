@@ -34,7 +34,8 @@ export async function compile(program: MuddleArgs, filename: string, basename: s
 			unsafe_math: true
 		},
 		output: {
-			comments: false
+			comments: false,
+			semicolons: false
 		}
 	});
 
@@ -43,7 +44,6 @@ export async function compile(program: MuddleArgs, filename: string, basename: s
 		return;
 	}
 	let compiledCode = compiled.code;
-
 
 	if(filename.endsWith('.temp.js')) {
 		fs.unlink(filename, (err)=>{});
